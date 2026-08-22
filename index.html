@@ -15,10 +15,15 @@
   <!-- FontAwesome Icons & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css">
-</head>
 <body>
 
-  <!-- ==========================================================================
+  <!-- Animated Aurora Background & Particle Canvas -->
+  <div class="aurora-bg-container">
+    <div class="aurora-blob aurora-blob-1"></div>
+    <div class="aurora-blob aurora-blob-2"></div>
+    <div class="aurora-blob aurora-blob-3"></div>
+  </div>
+  <canvas id="bgParticlesCanvas" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 0;"></canvas>
        Navigation Bar
        ========================================================================== -->
   <header class="navbar">
