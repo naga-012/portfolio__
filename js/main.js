@@ -379,7 +379,7 @@ function initCounterAnimations() {
 }
 
 /* --------------------------------------------------------------------------
-   8. Dynamic Interactive Particle Canvas
+   8. Dynamic Interactive Particle & Mouse Constellation Canvas
    -------------------------------------------------------------------------- */
 function initAnimatedParticles() {
   const canvas = document.getElementById('bgParticlesCanvas');
@@ -389,22 +389,34 @@ function initAnimatedParticles() {
   let width = (canvas.width = window.innerWidth);
   let height = (canvas.height = window.innerHeight);
 
+  const mouse = { x: null, y: null, radius: 170 };
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
   window.addEventListener('resize', () => {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
   });
 
-  const particleCount = Math.min(Math.floor(width / 25), 45);
+  const particleCount = Math.min(Math.floor(width / 20), 60);
   const particles = [];
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      radius: Math.random() * 2 + 1,
-      alpha: Math.random() * 0.5 + 0.2
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6,
+      radius: Math.random() * 2.5 + 1,
+      alpha: Math.random() * 0.6 + 0.3
     });
   }
 
@@ -413,7 +425,7 @@ function initAnimatedParticles() {
 
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const particleColor = isLight ? 'rgba(79, 70, 229, ' : 'rgba(6, 182, 212, ';
-    const lineColor = isLight ? 'rgba(79, 70, 229, 0.08)' : 'rgba(99, 102, 241, 0.12)';
+    const mouseLineColor = isLight ? 'rgba(124, 58, 237, ' : 'rgba(236, 72, 153, ';
 
     for (let i = 0; i < particleCount; i++) {
       const p = particles[i];
@@ -428,17 +440,36 @@ function initAnimatedParticles() {
       ctx.fillStyle = particleColor + p.alpha + ')';
       ctx.fill();
 
+      // Mouse interactive laser connections
+      if (mouse.x !== null && mouse.y !== null) {
+        const mdx = p.x - mouse.x;
+        const mdy = p.y - mouse.y;
+        const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+        if (mdist < mouse.radius) {
+          const force = (mouse.radius - mdist) / mouse.radius;
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = mouseLineColor + (force * 0.6) + ')';
+          ctx.lineWidth = 1.2 * force;
+          ctx.stroke();
+        }
+      }
+
+      // Constellation node links
       for (let j = i + 1; j < particleCount; j++) {
         const p2 = particles[j];
         const dx = p.x - p2.x;
         const dy = p.y - p2.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 130) {
+        if (dist < 140) {
+          const alpha = (1 - dist / 140) * 0.25;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(p2.x, p2.y);
-          ctx.strokeStyle = lineColor;
+          ctx.strokeStyle = isLight ? `rgba(79, 70, 229, ${alpha})` : `rgba(99, 102, 241, ${alpha})`;
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }
