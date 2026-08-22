@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyEmail();
   initCounterAnimations();
   initAnimatedParticles();
+  initAnimatedName();
 });
 
 /* --------------------------------------------------------------------------
@@ -448,4 +449,22 @@ function initAnimatedParticles() {
   }
 
   animate();
+}
+
+/* --------------------------------------------------------------------------
+   9. Kinetic Letter-by-Letter Animated Name Feature
+   -------------------------------------------------------------------------- */
+function initAnimatedName() {
+  const nameElement = document.getElementById('animatedHeroName');
+  if (!nameElement) return;
+
+  const text = nameElement.innerText;
+  nameElement.innerHTML = '';
+
+  [...text].forEach(char => {
+    const span = document.createElement('span');
+    span.className = 'name-char';
+    span.innerText = char === ' ' ? '\u00A0' : char;
+    nameElement.appendChild(span);
+  });
 }
