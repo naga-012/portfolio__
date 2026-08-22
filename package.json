@@ -1,0 +1,22 @@
+{
+  "name": "portfolio-app",
+  "version": "1.0.0",
+  "description": "Portfolio Website with Express Backend and Static Frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npx http-server ./ -p 3000 -c-1",
+    "dev": "concurrently \"npm run server\" \"npm run client\" --names \"BACKEND,FRONTEND\" --prefix-colors \"bgBlue.bold,bgMagenta.bold\""
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "http-server": "^14.1.1",
+    "nodemon": "^3.1.0"
+  }
+}

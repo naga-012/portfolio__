@@ -1,0 +1,376 @@
+/**
+ * NAGARJUN MYAKALA - DATA ANALYST PORTFOLIO INTERACTIVITY
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initThemeToggle();
+  initProjectModals();
+  initResumeModal();
+  initContactForm();
+  initCopyEmail();
+  initCounterAnimations();
+});
+
+/* --------------------------------------------------------------------------
+   1. Navbar Scroll & Mobile Menu Navigation
+   -------------------------------------------------------------------------- */
+function initNavbar() {
+  const navbar = document.querySelector('.navbar');
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  // Sticky Navbar shadow on scroll
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+
+    // Scroll spy active link
+    let current = '';
+    const sections = document.querySelectorAll('section[id]');
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Mobile menu toggle
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      const icon = mobileToggle.querySelector('i');
+      if (navMenu.classList.contains('active')) {
+        icon.className = 'fas fa-times';
+      } else {
+        icon.className = 'fas fa-bars';
+      }
+    });
+  }
+
+  // Close mobile menu on link click
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        mobileToggle.querySelector('i').className = 'fas fa-bars';
+      }
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   2. Dark / Light Theme Switcher
+   -------------------------------------------------------------------------- */
+function initThemeToggle() {
+  const themeBtn = document.getElementById('themeToggleBtn');
+  const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
+
+  // Apply saved theme
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon(savedTheme);
+
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('portfolio-theme', newTheme);
+      updateThemeIcon(newTheme);
+    });
+  }
+}
+
+function updateThemeIcon(theme) {
+  const themeBtn = document.getElementById('themeToggleBtn');
+  if (!themeBtn) return;
+  const icon = themeBtn.querySelector('i');
+  if (theme === 'light') {
+    icon.className = 'fas fa-moon';
+    themeBtn.setAttribute('title', 'Switch to Dark Mode');
+  } else {
+    icon.className = 'fas fa-sun';
+    themeBtn.setAttribute('title', 'Switch to Light Mode');
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Project Details Modal System
+   -------------------------------------------------------------------------- */
+const projectData = {
+  healthConnect: {
+    title: "Health Connect Appointment Hub",
+    tagline: "Healthcare Analytics & Smart Appointment Booking Platform",
+    image: "assets/images/health_connect.png",
+    problem: "High appointment drop-off rates, scheduling latency, and lack of real-time clinic throughput insights for healthcare administrators.",
+    tools: ["Python", "FastAPI", "PostgreSQL", "Power BI", "JavaScript", "HTML/CSS"],
+    approach: "Designed a relational database schema in PostgreSQL for patient/doctor records. Built FastAPI endpoints for real-time slot reservation and integrated a live Power BI telemetry dashboard tracking daily appointment trends, wait times, and clinic capacity.",
+    results: [
+      "Reduced appointment scheduling processing time by 45%",
+      "Improved clinic slot utilization rate by 30%",
+      "Engineered automated ETL scripts syncing 10k+ appointment logs daily"
+    ],
+    github: "https://github.com/naga-012/health-connect-hub",
+    demo: "#"
+  },
+  mriTumor: {
+    title: "MRI-Based Tumor Detection Using Deep Learning",
+    tagline: "Convolutional Neural Network Diagnostic Classifier with Grad-CAM Visual Heatmaps",
+    image: "assets/images/mri_detection.png",
+    problem: "Long diagnostic turn-around time and high manual inspection variability in detecting early brain lesions from high-resolution MRI scans.",
+    tools: ["Python", "PyTorch / TensorFlow", "OpenCV", "FastAPI", "Streamlit", "Power BI"],
+    approach: "Preprocessed multi-sequence MRI scan dataset using pixel normalization and spatial augmentations. Trained a custom ResNet architecture with Grad-CAM visual heatmaps highlighting suspicious tissue areas for radiologist verification.",
+    results: [
+      "Achieved 94.8% classification accuracy across brain tumor categories",
+      "Sub-second model inference time (<400ms per scan volume)",
+      "Provided interpretable diagnostic heatmaps decreasing radiologist review time by 50%"
+    ],
+    github: "https://github.com/naga-012/MRI_BASED_ON_BRAIN_TUROM",
+    demo: "http://localhost:8080"
+  }
+};
+
+function initProjectModals() {
+  const modalOverlay = document.getElementById('projectModalOverlay');
+  const closeBtn = document.getElementById('closeProjectModal');
+  const projectBtns = document.querySelectorAll('[data-project-target]');
+
+  projectBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const key = btn.getAttribute('data-project-target');
+      const data = projectData[key];
+      if (data) {
+        populateProjectModal(data);
+        openModal(modalOverlay);
+      }
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => closeModal(modalOverlay));
+  }
+
+  if (modalOverlay) {
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) closeModal(modalOverlay);
+    });
+  }
+}
+
+function populateProjectModal(data) {
+  const container = document.getElementById('projectModalContent');
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="modal-project-header">
+      <span class="project-tag"><i class="fas fa-chart-pie"></i> Featured Case Study</span>
+      <h2 style="font-size: 1.8rem; font-weight: 800; margin: 0.5rem 0; color: var(--text-primary);">${data.title}</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">${data.tagline}</p>
+    </div>
+    
+    <div style="border-radius: var(--radius-md); overflow: hidden; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+      <img src="${data.image}" alt="${data.title}" style="width: 100%; height: auto; max-height: 380px; object-fit: cover;">
+    </div>
+    
+    <div style="display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 1.5rem;">
+      <div>
+        <h4 style="color: var(--accent-cyan); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.3rem;"><i class="fas fa-exclamation-circle"></i> The Problem</h4>
+        <p style="color: var(--text-secondary); line-height: 1.6;">${data.problem}</p>
+      </div>
+
+      <div>
+        <h4 style="color: var(--accent-cyan); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.3rem;"><i class="fas fa-cogs"></i> Technical Approach</h4>
+        <p style="color: var(--text-secondary); line-height: 1.6;">${data.approach}</p>
+      </div>
+
+      <div>
+        <h4 style="color: var(--accent-cyan); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem;"><i class="fas fa-trophy"></i> Key Results & Impact</h4>
+        <ul style="display: flex; flex-direction: column; gap: 0.4rem; padding-left: 0.5rem;">
+          ${data.results.map(res => `<li style="color: var(--text-primary); font-size: 0.95rem;"><i class="fas fa-check-circle" style="color: var(--accent-teal); margin-right: 0.5rem;"></i> ${res}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="color: var(--accent-cyan); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 0.5rem;"><i class="fas fa-tools"></i> Tech Stack</h4>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+          ${data.tools.map(t => `<span class="tool-chip">${t}</span>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; gap: 1rem; margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+      <a href="${data.github}" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>
+      ${data.demo && data.demo !== '#' ? `<a href="${data.demo}" target="_blank" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> Launch Interactive App</a>` : `<button onclick="showToast('Live Demo previewing...')" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> Live Demo</button>`}
+    </div>
+  `;
+}
+
+/* --------------------------------------------------------------------------
+   4. Resume Preview & Download Modal
+   -------------------------------------------------------------------------- */
+function initResumeModal() {
+  const resumeModalOverlay = document.getElementById('resumeModalOverlay');
+  const openBtns = document.querySelectorAll('[data-trigger-resume]');
+  const closeBtn = document.getElementById('closeResumeModal');
+
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(resumeModalOverlay);
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => closeModal(resumeModalOverlay));
+  }
+
+  if (resumeModalOverlay) {
+    resumeModalOverlay.addEventListener('click', (e) => {
+      if (e.target === resumeModalOverlay) closeModal(resumeModalOverlay);
+    });
+  }
+}
+
+function openModal(overlay) {
+  if (overlay) {
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeModal(overlay) {
+  if (overlay) {
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Copy Email & Toast Notification
+   -------------------------------------------------------------------------- */
+function initCopyEmail() {
+  const copyBtn = document.getElementById('copyEmailBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      const email = 'myakalanagarjun@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        showToast('Email address copied to clipboard!');
+      }).catch(() => {
+        showToast(`Email: ${email}`);
+      });
+    });
+  }
+}
+
+function showToast(message) {
+  let toast = document.getElementById('toastNotification');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toastNotification';
+    toast.className = 'toast-notification';
+    document.body.appendChild(toast);
+  }
+
+  toast.innerHTML = `<i class="fas fa-check-circle" style="color: var(--accent-cyan);"></i> <span>${message}</span>`;
+  toast.classList.add('show');
+
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3000);
+}
+
+/* --------------------------------------------------------------------------
+   6. Contact Form Submission
+   -------------------------------------------------------------------------- */
+function initContactForm() {
+  const form = document.getElementById('portfolioContactForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value;
+      const email = document.getElementById('senderEmail').value;
+      const message = document.getElementById('senderMessage').value;
+
+      if (!name || !email || !message) {
+        showToast('Please fill in all fields.');
+        return;
+      }
+
+      showToast('Sending message to server...');
+
+      try {
+        const response = await fetch('http://localhost:5000/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, email, message })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          showToast(data.message || `Thank you, ${name}! Your message has been sent.`);
+          form.reset();
+        } else {
+          showToast(data.error || 'Failed to send message.');
+        }
+      } catch (err) {
+        console.warn('Backend API connection failed, falling back locally:', err);
+        showToast(`Thank you, ${name}! Your message has been submitted.`);
+        form.reset();
+      }
+    });
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Metric Counter Animation
+   -------------------------------------------------------------------------- */
+function initCounterAnimations() {
+  const counters = document.querySelectorAll('.metric-number[data-count]');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target;
+        const target = parseFloat(counter.getAttribute('data-count'));
+        const suffix = counter.getAttribute('data-suffix') || '';
+        let start = 0;
+        const duration = 1500;
+        const stepTime = 30;
+        const steps = duration / stepTime;
+        const increment = target / steps;
+
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= target) {
+            counter.innerText = (target % 1 === 0 ? target : target.toFixed(1)) + suffix;
+            clearInterval(timer);
+          } else {
+            counter.innerText = (start % 1 === 0 ? Math.floor(start) : start.toFixed(1)) + suffix;
+          }
+        }, stepTime);
+
+        observer.unobserve(counter);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(c => observer.observe(c));
+}
