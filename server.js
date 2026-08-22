@@ -98,9 +98,13 @@ app.get('*', (req, res) => {
 });
 
 // Start Server
-app.listen(PORT, () => {
-  console.log(`=================================================`);
-  console.log(`🚀 BACKEND SERVER RUNNING AT: http://localhost:${PORT}`);
-  console.log(`📡 API Health Check: http://localhost:${PORT}/api/health`);
-  console.log(`=================================================`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`=================================================`);
+    console.log(`🚀 BACKEND SERVER RUNNING AT: http://localhost:${PORT}`);
+    console.log(`📡 API Health Check: http://localhost:${PORT}/api/health`);
+    console.log(`=================================================`);
+  });
+}
+
+module.exports = app;

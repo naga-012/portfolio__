@@ -314,7 +314,8 @@ function initContactForm() {
       showToast('Sending message to server...');
 
       try {
-        const response = await fetch('http://localhost:5000/api/contact', {
+        const apiEndpoint = (window.location.port === '3000') ? 'http://localhost:5000/api/contact' : '/api/contact';
+        const response = await fetch(apiEndpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
