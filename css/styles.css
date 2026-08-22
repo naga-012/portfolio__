@@ -8,7 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  /* Color Palette - Vibrant Dark Slate, Electric Indigo & Cyber Cyan */
+  /* Main Color Palette - Lavender, Light Semi Green, and Light Orange */
   --bg-primary: #070913;
   --bg-secondary: #0e1322;
   --bg-card: rgba(15, 22, 38, 0.75);
@@ -19,19 +19,28 @@
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   
-  --accent-cyan: #06b6d4;
-  --accent-indigo: #6366f1;
-  --accent-violet: #8b5cf6;
-  --accent-teal: #14b8a6;
-  --accent-emerald: #10b981;
-  --accent-pink: #ec4899;
+  /* Primary Theme Accents: Lavender, Light Semi Green, Light Orange */
+  --accent-lavender: #c4b5fd;
+  --accent-semi-green: #86efac;
+  --accent-light-orange: #fdba74;
+
+  --accent-cyan: #c4b5fd; /* Default primary brand highlight -> Lavender */
+  --accent-indigo: #86efac; /* Secondary brand highlight -> Light Semi Green */
+  --accent-violet: #c4b5fd;
+  --accent-teal: #86efac;
+  --accent-emerald: #86efac;
+  --accent-pink: #fdba74;
+
+  --accent-lavender-glow: rgba(196, 181, 253, 0.35);
+  --accent-semi-green-glow: rgba(134, 239, 172, 0.35);
+  --accent-light-orange-glow: rgba(253, 186, 116, 0.35);
   
-  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #06b6d4 50%, #10b981 100%);
-  --accent-gradient-alt: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-  --accent-glow: rgba(99, 102, 241, 0.3);
+  --accent-gradient: linear-gradient(135deg, #c4b5fd 0%, #86efac 50%, #fdba74 100%);
+  --accent-gradient-alt: linear-gradient(135deg, #fdba74 0%, #c4b5fd 50%, #86efac 100%);
+  --accent-glow: rgba(196, 181, 253, 0.35);
   
-  --border-color: rgba(255, 255, 255, 0.1);
-  --border-hover: rgba(6, 182, 212, 0.5);
+  --border-color: rgba(255, 255, 255, 0.12);
+  --border-hover: rgba(196, 181, 253, 0.6);
   
   /* Typography & Layout */
   --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -44,7 +53,7 @@
   
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
   --shadow-md: 0 10px 20px -3px rgba(0, 0, 0, 0.4);
-  --shadow-glow: 0 0 30px rgba(99, 102, 241, 0.25);
+  --shadow-glow: 0 0 30px rgba(196, 181, 253, 0.3);
   
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -56,8 +65,8 @@
 /* Light Theme Variables Override */
 [data-theme="light"] {
   --bg-primary: #f8fafc;
-  --bg-secondary: #eff6ff;
-  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-secondary: #f1f5f9;
+  --bg-card: rgba(255, 255, 255, 0.92);
   --bg-card-hover: rgba(255, 255, 255, 1);
   --bg-glass: rgba(255, 255, 255, 0.88);
   
@@ -65,23 +74,54 @@
   --text-secondary: #334155;
   --text-muted: #64748b;
   
-  --accent-cyan: #0284c7;
-  --accent-indigo: #4f46e5;
+  /* Light Mode Contrast Accents */
+  --accent-lavender: #7c3aed;
+  --accent-semi-green: #16a34a;
+  --accent-light-orange: #ea580c;
+
+  --accent-cyan: #7c3aed;
+  --accent-indigo: #16a34a;
   --accent-violet: #7c3aed;
-  --accent-teal: #0d9488;
-  --accent-emerald: #059669;
-  --accent-pink: #db2777;
+  --accent-teal: #16a34a;
+  --accent-emerald: #16a34a;
+  --accent-pink: #ea580c;
+
+  --accent-lavender-glow: rgba(124, 58, 237, 0.25);
+  --accent-semi-green-glow: rgba(22, 163, 74, 0.25);
+  --accent-light-orange-glow: rgba(234, 88, 12, 0.25);
   
-  --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #0284c7 50%, #059669 100%);
-  --accent-gradient-alt: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
-  --accent-glow: rgba(79, 70, 229, 0.2);
+  --accent-gradient: linear-gradient(135deg, #7c3aed 0%, #16a34a 50%, #ea580c 100%);
+  --accent-gradient-alt: linear-gradient(135deg, #ea580c 0%, #7c3aed 50%, #16a34a 100%);
+  --accent-glow: rgba(124, 58, 237, 0.25);
   
-  --border-color: rgba(15, 23, 42, 0.1);
-  --border-hover: rgba(79, 70, 229, 0.4);
+  --border-color: rgba(15, 23, 42, 0.12);
+  --border-hover: rgba(124, 58, 237, 0.5);
   
   --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 10px 20px -3px rgba(0, 0, 0, 0.08);
-  --shadow-glow: 0 0 25px rgba(79, 70, 229, 0.15);
+  --shadow-glow: 0 0 25px rgba(124, 58, 237, 0.2);
+}
+
+/* Custom Interactive Accent Theme Overrides */
+[data-accent="lavender"] {
+  --accent-cyan: var(--accent-lavender);
+  --accent-indigo: #a78bfa;
+  --border-hover: var(--accent-lavender);
+  --accent-glow: var(--accent-lavender-glow);
+}
+
+[data-accent="semi-green"] {
+  --accent-cyan: var(--accent-semi-green);
+  --accent-indigo: #4ade80;
+  --border-hover: var(--accent-semi-green);
+  --accent-glow: var(--accent-semi-green-glow);
+}
+
+[data-accent="light-orange"] {
+  --accent-cyan: var(--accent-light-orange);
+  --accent-indigo: #fb923c;
+  --border-hover: var(--accent-light-orange);
+  --accent-glow: var(--accent-light-orange-glow);
 }
 
 /* --------------------------------------------------------------------------
@@ -875,6 +915,96 @@ ul {
   color: var(--accent-cyan);
 }
 
+/* Color Accent Variations for Tags & Badges */
+.tag-lavender {
+  border-color: rgba(196, 181, 253, 0.35);
+  background: rgba(196, 181, 253, 0.08);
+}
+.tag-lavender i, .tag-lavender .highlight-text {
+  color: var(--accent-lavender);
+}
+.tag-lavender:hover {
+  border-color: var(--accent-lavender);
+  background: rgba(196, 181, 253, 0.18);
+  color: var(--accent-lavender);
+  box-shadow: 0 4px 15px var(--accent-lavender-glow);
+}
+
+.tag-semi-green {
+  border-color: rgba(134, 239, 172, 0.35);
+  background: rgba(134, 239, 172, 0.08);
+}
+.tag-semi-green i, .tag-semi-green .highlight-text {
+  color: var(--accent-semi-green);
+}
+.tag-semi-green:hover {
+  border-color: var(--accent-semi-green);
+  background: rgba(134, 239, 172, 0.18);
+  color: var(--accent-semi-green);
+  box-shadow: 0 4px 15px var(--accent-semi-green-glow);
+}
+
+.tag-light-orange {
+  border-color: rgba(253, 186, 116, 0.35);
+  background: rgba(253, 186, 116, 0.08);
+}
+.tag-light-orange i, .tag-light-orange .highlight-text {
+  color: var(--accent-light-orange);
+}
+.tag-light-orange:hover {
+  border-color: var(--accent-light-orange);
+  background: rgba(253, 186, 116, 0.18);
+  color: var(--accent-light-orange);
+  box-shadow: 0 4px 15px var(--accent-light-orange-glow);
+}
+
+/* Metric Number Color Variations */
+.metric-lavender .metric-number {
+  color: var(--accent-lavender);
+}
+.metric-lavender:hover {
+  border-color: var(--accent-lavender);
+}
+
+.metric-semi-green .metric-number {
+  color: var(--accent-semi-green);
+}
+.metric-semi-green:hover {
+  border-color: var(--accent-semi-green);
+}
+
+.metric-light-orange .metric-number {
+  color: var(--accent-light-orange);
+}
+.metric-light-orange:hover {
+  border-color: var(--accent-light-orange);
+}
+
+/* Card Accent Top Border Highlights */
+.card-lavender .category-icon {
+  background: rgba(196, 181, 253, 0.15);
+  color: var(--accent-lavender);
+}
+.card-lavender:hover {
+  border-color: var(--accent-lavender);
+}
+
+.card-semi-green .category-icon {
+  background: rgba(134, 239, 172, 0.15);
+  color: var(--accent-semi-green);
+}
+.card-semi-green:hover {
+  border-color: var(--accent-semi-green);
+}
+
+.card-light-orange .category-icon {
+  background: rgba(253, 186, 116, 0.15);
+  color: var(--accent-light-orange);
+}
+.card-light-orange:hover {
+  border-color: var(--accent-light-orange);
+}
+
 /* --------------------------------------------------------------------------
    Projects Section (Case-Study Cards)
    -------------------------------------------------------------------------- */
@@ -1543,7 +1673,7 @@ ul {
   left: -10%;
   width: 50vw;
   height: 50vw;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(6, 182, 212, 0.12) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(196, 181, 253, 0.28) 0%, rgba(139, 92, 246, 0.12) 70%, transparent 100%);
   animation-duration: 22s;
 }
 
@@ -1552,7 +1682,7 @@ ul {
   right: -10%;
   width: 55vw;
   height: 55vw;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.22) 0%, rgba(16, 185, 129, 0.15) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(134, 239, 172, 0.25) 0%, rgba(16, 185, 129, 0.12) 70%, transparent 100%);
   animation-duration: 26s;
   animation-delay: -6s;
 }
@@ -1562,10 +1692,45 @@ ul {
   left: 30%;
   width: 45vw;
   height: 45vw;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, rgba(236, 72, 153, 0.1) 70%, transparent 100%);
+  background: radial-gradient(circle, rgba(253, 186, 116, 0.25) 0%, rgba(249, 115, 22, 0.12) 70%, transparent 100%);
   animation-duration: 24s;
   animation-delay: -12s;
 }
+
+/* Accent Theme Picker Navbar Widget */
+.accent-picker-container {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+.accent-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.accent-dot:hover {
+  transform: scale(1.2);
+}
+
+.accent-dot.active {
+  border-color: var(--text-primary);
+  transform: scale(1.15);
+  box-shadow: 0 0 8px currentColor;
+}
+
+.accent-dot-trio { background: linear-gradient(135deg, #c4b5fd, #86efac, #fdba74); }
+.accent-dot-lavender { background: #c4b5fd; }
+.accent-dot-semi-green { background: #86efac; }
+.accent-dot-light-orange { background: #fdba74; }
 
 @keyframes floatAurora {
   0% { transform: translate(0, 0) scale(1) rotate(0deg); }

@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initThemeToggle();
+  initColorPicker();
   initProjectModals();
   initResumeModal();
   initContactForm();
@@ -109,6 +110,41 @@ function updateThemeIcon(theme) {
     icon.className = 'fas fa-sun';
     themeBtn.setAttribute('title', 'Switch to Light Mode');
   }
+}
+
+/* --------------------------------------------------------------------------
+   2b. Interactive Accent Color Picker (Lavender, Light Semi Green, Light Orange)
+   -------------------------------------------------------------------------- */
+function initColorPicker() {
+  const accentDots = document.querySelectorAll('.accent-dot');
+  const savedAccent = localStorage.getItem('portfolio-accent') || 'default';
+
+  // Apply saved accent
+  if (savedAccent !== 'default') {
+    document.documentElement.setAttribute('data-accent', savedAccent);
+  }
+  
+  accentDots.forEach(dot => {
+    const accentColor = dot.getAttribute('data-accent-color');
+    if (accentColor === savedAccent) {
+      dot.classList.add('active');
+    } else {
+      dot.classList.remove('active');
+    }
+
+    dot.addEventListener('click', () => {
+      accentDots.forEach(d => d.classList.remove('active'));
+      dot.classList.add('active');
+
+      if (accentColor === 'default') {
+        document.documentElement.removeAttribute('data-accent');
+        localStorage.setItem('portfolio-accent', 'default');
+      } else {
+        document.documentElement.setAttribute('data-accent', accentColor);
+        localStorage.setItem('portfolio-accent', accentColor);
+      }
+    });
+  });
 }
 
 /* --------------------------------------------------------------------------
