@@ -8,8 +8,11 @@ const PORT = process.env.PORT || 5000;
 // Serve frontend static files locally
 app.use(express.static(__dirname));
 
-// Fallback route
-app.get('*', (req, res) => {
+// Fallback route for SPA
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api')) {
+    return next();
+  }
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 

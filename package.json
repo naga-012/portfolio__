@@ -4,6 +4,7 @@
   "description": "Portfolio Website with Express Backend and Static Frontend",
   "main": "server.js",
   "scripts": {
+    "build": "echo 'Static build complete'",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npx http-server ./ -p 3000 -c-1",
