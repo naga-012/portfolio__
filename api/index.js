@@ -22,7 +22,7 @@ const projectData = {
     results: [
       "Reduced appointment scheduling processing time by 45%",
       "Improved clinic slot utilization rate by 30%",
-      "Engineered automated ETL scripts syncing 10k+ appointment logs daily"
+      "Engineered automated ETL scripts syncing 50k+ appointment logs daily"
     ],
     github: "https://github.com/naga-012/Health_connect_patient_booking",
     githubRepos: [
