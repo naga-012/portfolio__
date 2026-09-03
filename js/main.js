@@ -163,7 +163,11 @@ const projectData = {
       "Improved clinic slot utilization rate by 30%",
       "Engineered automated ETL scripts syncing 10k+ appointment logs daily"
     ],
-    github: "https://github.com/naga-012/health-connect-hub",
+    github: "https://github.com/naga-012/Health_connect_patient_booking",
+    githubRepos: [
+      { label: "Patient Booking Repo", url: "https://github.com/naga-012/Health_connect_patient_booking" },
+      { label: "Doctor Portal Repo", url: "https://github.com/naga-012/Health_connect_Doctor" }
+    ],
     demo: "#"
   },
   mriTumor: {
@@ -266,8 +270,8 @@ function populateProjectModal(data) {
       </div>
     </div>
 
-    <div style="display: flex; gap: 1rem; margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
-      <a href="${data.github}" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+      ${data.githubRepos ? data.githubRepos.map(repo => `<a href="${repo.url}" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> ${repo.label}</a>`).join('') : `<a href="${data.github}" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>`}
       ${data.demo && data.demo !== '#' ? `<a href="${data.demo}" target="_blank" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> Launch Interactive App</a>` : `<button onclick="showToast('Live Demo previewing...')" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> Live Demo</button>`}
     </div>
   `;

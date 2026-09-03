@@ -24,7 +24,11 @@ const projectData = {
       "Improved clinic slot utilization rate by 30%",
       "Engineered automated ETL scripts syncing 10k+ appointment logs daily"
     ],
-    github: "https://github.com/naga-012/health-connect-hub",
+    github: "https://github.com/naga-012/Health_connect_patient_booking",
+    githubRepos: [
+      { label: "Patient Booking Repo", url: "https://github.com/naga-012/Health_connect_patient_booking" },
+      { label: "Doctor Portal Repo", url: "https://github.com/naga-012/Health_connect_Doctor" }
+    ],
     demo: "#"
   },
   mriTumor: {
