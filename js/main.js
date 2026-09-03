@@ -295,6 +295,11 @@ function initResumeModal() {
         switchResumeTab('ai');
       }
       openModal(resumeModalOverlay);
+
+      const resumeSection = document.getElementById('resume');
+      if (resumeSection) {
+        resumeSection.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 
