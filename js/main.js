@@ -183,7 +183,7 @@ const projectData = {
       "Provided interpretable diagnostic heatmaps decreasing radiologist review time by 50%"
     ],
     github: "https://github.com/naga-012/MRI_BASED_ON_BRAIN_TUROM",
-    demo: "http://localhost:8080"
+    demo: "#"
   },
   mensStore: {
     title: "MENSVERSE — 3D Animated Men's Fashion Store",
