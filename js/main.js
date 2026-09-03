@@ -430,35 +430,58 @@ function initContactForm() {
    -------------------------------------------------------------------------- */
 function initCounterAnimations() {
   const counters = document.querySelectorAll('.metric-number[data-count]');
-  
+  if (!counters.length) return;
+
+  const runAnimation = (counter) => {
+    if (counter.dataset.animated) return;
+    counter.dataset.animated = 'true';
+
+    const target = parseFloat(counter.getAttribute('data-count'));
+    const suffix = counter.getAttribute('data-suffix') || '';
+    const isFloat = target % 1 !== 0;
+    const duration = 1200;
+    const stepTime = 25;
+    const steps = duration / stepTime;
+    const increment = target / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        counter.innerText = (isFloat ? target.toFixed(1) : Math.round(target)) + suffix;
+        clearInterval(timer);
+      } else {
+        counter.innerText = (isFloat ? current.toFixed(1) : Math.round(current)) + suffix;
+      }
+    }, stepTime);
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    counters.forEach(c => {
+      const target = parseFloat(c.getAttribute('data-count'));
+      const suffix = c.getAttribute('data-suffix') || '';
+      c.innerText = target + suffix;
+    });
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const counter = entry.target;
-        const target = parseFloat(counter.getAttribute('data-count'));
-        const suffix = counter.getAttribute('data-suffix') || '';
-        let start = 0;
-        const duration = 1500;
-        const stepTime = 30;
-        const steps = duration / stepTime;
-        const increment = target / steps;
-
-        const timer = setInterval(() => {
-          start += increment;
-          if (start >= target) {
-            counter.innerText = (target % 1 === 0 ? target : target.toFixed(1)) + suffix;
-            clearInterval(timer);
-          } else {
-            counter.innerText = (start % 1 === 0 ? Math.floor(start) : start.toFixed(1)) + suffix;
-          }
-        }, stepTime);
-
-        observer.unobserve(counter);
+        runAnimation(entry.target);
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
 
-  counters.forEach(c => observer.observe(c));
+  counters.forEach(c => {
+    const rect = c.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      runAnimation(c);
+    } else {
+      observer.observe(c);
+    }
+  });
 }
 
 /* --------------------------------------------------------------------------
