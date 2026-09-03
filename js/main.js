@@ -288,6 +288,12 @@ function initResumeModal() {
   openBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      const targetTab = btn.getAttribute('data-trigger-resume');
+      if (targetTab === 'analytics') {
+        switchResumeTab('analytics');
+      } else {
+        switchResumeTab('ai');
+      }
       openModal(resumeModalOverlay);
     });
   });
@@ -300,6 +306,28 @@ function initResumeModal() {
     resumeModalOverlay.addEventListener('click', (e) => {
       if (e.target === resumeModalOverlay) closeModal(resumeModalOverlay);
     });
+  }
+}
+
+function switchResumeTab(tab) {
+  const tabAi = document.getElementById('tabBtnAi');
+  const tabAnalytics = document.getElementById('tabBtnAnalytics');
+  const contentAi = document.getElementById('resumeAiContent');
+  const contentAnalytics = document.getElementById('resumeAnalyticsContent');
+  const headerSubtitle = document.getElementById('resumeHeaderSubtitle');
+
+  if (tab === 'analytics') {
+    if (tabAnalytics) tabAnalytics.classList.add('active');
+    if (tabAi) tabAi.classList.remove('active');
+    if (contentAnalytics) contentAnalytics.style.display = 'block';
+    if (contentAi) contentAi.style.display = 'none';
+    if (headerSubtitle) headerSubtitle.textContent = 'Data Analyst | SQL, Excel, Python, Power BI, Statistics';
+  } else {
+    if (tabAi) tabAi.classList.add('active');
+    if (tabAnalytics) tabAnalytics.classList.remove('active');
+    if (contentAi) contentAi.style.display = 'block';
+    if (contentAnalytics) contentAnalytics.style.display = 'none';
+    if (headerSubtitle) headerSubtitle.textContent = 'AI Full Stack Developer | Python, FastAPI, React.js, LangChain, Generative AI';
   }
 }
 

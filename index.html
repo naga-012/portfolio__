@@ -105,14 +105,14 @@
 
             <div class="hero-actions">
               <a href="#projects" class="btn btn-primary">
-                <i class="fas fa-chart-line"></i> View Projects
+                <i class="fas fa-folder-open"></i> View Projects
               </a>
-              <a href="#" class="btn btn-secondary" data-trigger-resume>
-                <i class="fas fa-download"></i> Download Resume
+              <a href="#" class="btn btn-secondary" data-trigger-resume="ai">
+                <i class="fas fa-brain"></i> AI Resume
               </a>
-              <button id="copyEmailBtn" class="btn btn-outline" title="Copy Email">
-                <i class="fas fa-envelope"></i> Copy Email
-              </button>
+              <a href="#" class="btn btn-secondary" data-trigger-resume="analytics" style="border-color: var(--accent-cyan); color: var(--accent-cyan);">
+                <i class="fas fa-chart-bar"></i> Data Analyst Resume
+              </a>
             </div>
 
             <div class="hero-tech-stack">
@@ -560,15 +560,18 @@
 
         <!-- Resume Download Section Banner -->
         <div class="resume-banner">
-          <h3 class="resume-banner-title">Interested in my full background?</h3>
+          <h3 class="resume-banner-title">Need My Detailed Credentials?</h3>
           <p class="resume-banner-text">
-            Download my updated resume to review my detailed academic credentials, technical projects, and data engineering coursework.
+            Review or download my specialized resumes tailored for <strong>AI Full Stack Development</strong> or <strong>Data Analytics & BI</strong>.
           </p>
           <div class="resume-actions">
-            <a href="#" class="btn btn-primary" data-trigger-resume>
-              <i class="fas fa-eye"></i> View & Download Resume
+            <a href="#" class="btn btn-primary" data-trigger-resume="ai">
+              <i class="fas fa-brain"></i> AI Full Stack Developer Resume
             </a>
-            <a href="#contact" class="btn btn-secondary">
+            <a href="#" class="btn btn-secondary" data-trigger-resume="analytics" style="border-color: var(--accent-cyan); color: var(--accent-cyan);">
+              <i class="fas fa-chart-bar"></i> Data Analyst Resume
+            </a>
+            <a href="#contact" class="btn btn-outline">
               <i class="fas fa-paper-plane"></i> Get In Touch
             </a>
           </div>
@@ -715,11 +718,21 @@
       <button class="modal-close-btn" id="closeResumeModal" aria-label="Close resume modal">
         <i class="fas fa-times"></i>
       </button>
+
+      <!-- Resume Profile Switcher Tabs -->
+      <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+        <button class="resume-tab-btn active" id="tabBtnAi" onclick="switchResumeTab('ai')">
+          <i class="fas fa-brain"></i> AI Full Stack Developer Resume
+        </button>
+        <button class="resume-tab-btn" id="tabBtnAnalytics" onclick="switchResumeTab('analytics')">
+          <i class="fas fa-chart-bar"></i> Data Analyst Resume
+        </button>
+      </div>
       
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
         <div>
           <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-primary);">Myakala Nagarjun — Resume</h2>
-          <p style="color: var(--text-secondary); font-size: 0.9rem;">AI Full Stack Developer | Python, FastAPI, React.js, LangChain, Generative AI</p>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;" id="resumeHeaderSubtitle">AI Full Stack Developer | Python, FastAPI, React.js, LangChain, Generative AI</p>
         </div>
         <button onclick="window.print()" class="btn btn-primary">
           <i class="fas fa-print"></i> Print / Save as PDF
@@ -729,111 +742,229 @@
       <!-- Resume Content Printable Preview -->
       <div style="background: var(--bg-card); border: 1px solid var(--border-color); padding: 2.2rem; border-radius: var(--radius-md); font-size: 0.95rem; line-height: 1.6;">
         
-        <div style="text-align: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
-          <h1 style="font-size: 1.9rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 0.3rem;">MYAKALA NAGARJUN</h1>
-          <p style="color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;">AI Full Stack Developer</p>
-          <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.4rem;">
-            Hyderabad, India • +91 9121792433 • myakalanagarjun@gmail.com • <a href="https://linkedin.com/in/nagarjun-myakala-" target="_blank" style="color: var(--accent-teal);">linkedin.com/in/nagarjun-myakala-</a> • <a href="https://github.com/naga-012" target="_blank" style="color: var(--accent-teal);">github.com/naga-012</a>
-          </p>
-        </div>
-
-        <!-- Professional Summary -->
-        <div style="margin-bottom: 1.25rem;">
-          <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-user-circle"></i> Professional Summary</h3>
-          <p style="color: var(--text-secondary); line-height: 1.6;">
-            AI Full Stack Developer Intern with experience in Python backend systems creating RESTful APIs and working with Generative AI. I have a history of delivering results that matter—like processing over 50,000 data records without losing any data and cutting pipeline delay by 40 percent. I build production-ready RAG pipelines with FastAPI for microservices and design interactive web interfaces to fix system slowdowns and make things faster.
-          </p>
-        </div>
-
-        <!-- Technical Skills -->
-        <div style="margin-bottom: 1.25rem;">
-          <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-code"></i> Technical Skills</h3>
-          <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem;">
-            <li><strong>Programming Languages:</strong> Python, SQL, JavaScript, TypeScript</li>
-            <li><strong>Libraries & Frameworks:</strong> FastAPI, Flask, React.js, LangChain, LlamaIndex, Pandas, NumPy</li>
-            <li><strong>Databases & Analytics:</strong> PostgreSQL, MySQL, Vector Databases (FAISS, ChromaDB), Redis, Power BI</li>
-            <li><strong>Developer & AI Tools:</strong> Git, GitHub, Docker, Postman, VS Code, Jupyter Notebook, OpenAI API</li>
-            <li><strong>Core Competencies:</strong> Full-Stack AI Integration, RAG Pipeline Design, RESTful API Development, ETL Pipelines</li>
-          </ul>
-        </div>
-
-        <!-- Professional Experience -->
-        <div style="margin-bottom: 1.25rem;">
-          <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-briefcase"></i> Professional Experience</h3>
-          <div style="margin-bottom: 0.5rem;">
-            <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
-              <span>Vangrove Tech Pvt. Ltd. — AI Developer Intern</span>
-              <span>Jun 2026 – Present</span>
-            </div>
-            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.4rem;">Hyderabad, India</p>
-            <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.35rem;">
-              <li>Worked on Data Analytics and AI Full-Stack Development projects. Used Python and SQL to analyze data, process it and generate insights.</li>
-              <li>Contributed to end-to-end analytics workflows including collecting data, cleaning, transforming, analyzing, and visualizing it.</li>
-              <li>Assisted in developing and integrating features into full-stack applications in close collaboration with the development team.</li>
-              <li>Optimized data-driven solutions and analytical dashboards, transforming data into meaningful insights to support project requirements and decision-making.</li>
-            </ul>
+        <!-- -------------------------------------------------------------
+             TAB 1: AI FULL STACK DEVELOPER RESUME
+             ------------------------------------------------------------- -->
+        <div id="resumeAiContent">
+          <div style="text-align: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+            <h1 style="font-size: 1.9rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 0.3rem;">MYAKALA NAGARJUN</h1>
+            <p style="color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;">AI Full Stack Developer</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.4rem;">
+              Hyderabad, India • +91 9121792433 • myakalanagarjun@gmail.com • <a href="https://linkedin.com/in/nagarjun-myakala-" target="_blank" style="color: var(--accent-teal);">linkedin.com/in/nagarjun-myakala-</a> • <a href="https://github.com/naga-012" target="_blank" style="color: var(--accent-teal);">github.com/naga-012</a>
+            </p>
           </div>
-        </div>
 
-        <!-- Academic Projects -->
-        <div style="margin-bottom: 1.25rem;">
-          <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-folder-open"></i> Academic Projects</h3>
-          
-          <div style="margin-bottom: 1rem;">
-            <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
-              <span>Health Connect Appointment Hub</span>
-              <span>June 2025 – May 2026</span>
-            </div>
-            <p style="color: var(--accent-teal); font-size: 0.85rem; margin-bottom: 0.3rem;">HTML, CSS, JavaScript, Node.js, Express.js, MongoDB</p>
+          <!-- Professional Summary -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-user-circle"></i> Professional Summary</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6;">
+              AI Full Stack Developer Intern with experience in Python backend systems creating RESTful APIs and working with Generative AI. I have a history of delivering results that matter—like processing over 50,000 data records without losing any data and cutting pipeline delay by 40 percent. I build production-ready RAG pipelines with FastAPI for microservices and design interactive web interfaces to fix system slowdowns and make things faster.
+            </p>
+          </div>
+
+          <!-- Technical Skills -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-code"></i> Technical Skills</h3>
             <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem;">
-              <li>Developed a web-based appointment booking platform that lets patients find doctors and clinics and book appointments.</li>
-              <li>Created modules that patients, admins, and doctors can use to manage appointment times, bookings, and cancellations.</li>
-              <li>Set up a database system to keep patient, doctor, and appointment information safe and update availability in real time.</li>
-              <li>Made a simple and easy-to-use interface that simplifies booking appointments and cuts down manual work.</li>
+              <li><strong>Programming Languages:</strong> Python, SQL, JavaScript, TypeScript</li>
+              <li><strong>Libraries & Frameworks:</strong> FastAPI, Flask, React.js, LangChain, LlamaIndex, Pandas, NumPy</li>
+              <li><strong>Databases & Analytics:</strong> PostgreSQL, MySQL, Vector Databases (FAISS, ChromaDB), Redis, Power BI</li>
+              <li><strong>Developer & AI Tools:</strong> Git, GitHub, Docker, Postman, VS Code, Jupyter Notebook, OpenAI API</li>
+              <li><strong>Core Competencies:</strong> Full-Stack AI Integration, RAG Pipeline Design, RESTful API Development, ETL Pipelines</li>
             </ul>
           </div>
 
-          <div style="margin-bottom: 0.5rem;">
-            <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
-              <span>Store — 3D E-Commerce Platform (MENSVERSE)</span>
-              <span>May 2026 – Aug 2026</span>
+          <!-- Professional Experience -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-briefcase"></i> Professional Experience</h3>
+            <div style="margin-bottom: 0.5rem;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>Vangrove Tech Pvt. Ltd. — AI Developer Intern</span>
+                <span>Jun 2026 – Present</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.4rem;">Hyderabad, India</p>
+              <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.35rem;">
+                <li>Worked on Data Analytics and AI Full-Stack Development projects. Used Python and SQL to analyze data, process it and generate insights.</li>
+                <li>Contributed to end-to-end analytics workflows including collecting data, cleaning, transforming, analyzing, and visualizing it.</li>
+                <li>Assisted in developing and integrating features into full-stack applications in close collaboration with the development team.</li>
+                <li>Optimized data-driven solutions and analytical dashboards, transforming data into meaningful insights to support project requirements and decision-making.</li>
+              </ul>
             </div>
-            <p style="color: var(--accent-teal); font-size: 0.85rem; margin-bottom: 0.3rem;">React.js, Node.js, Express, MongoDB, JWT, Three.js / R3F</p>
-            <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem;">
-              <li>Built a full-stack e-commerce platform with two applications—a customer storefront and an admin dashboard—both built using React and Vite sharing the same backend.</li>
-              <li>Created a Node.js/Express REST API powered by MongoDB to handle product catalog order processing, customer data, and inventory management with JWT authentication.</li>
-              <li>Added automated email notifications using Nodemailer and Gmail SMTP to send order confirmations and system alerts.</li>
-              <li>Deployed a three-service architecture consisting of two frontends and one backend API on Render using a multi-service Blueprint for smooth CI/CD.</li>
-              <li>Integrated real-time inventory tracking to help store owners manage product availability dynamically.</li>
-            </ul>
           </div>
-        </div>
 
-        <!-- Education -->
-        <div style="margin-bottom: 1.25rem;">
-          <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-graduation-cap"></i> Education</h3>
-          <div style="margin-bottom: 0.5rem;">
-            <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
-              <span>Bharat Institute of Engineering and Technology — Hyderabad</span>
-              <span>2022 – 2026</span>
+          <!-- Academic Projects -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-folder-open"></i> Academic Projects</h3>
+            
+            <div style="margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>Health Connect Appointment Hub</span>
+                <span>June 2025 – May 2026</span>
+              </div>
+              <p style="color: var(--accent-teal); font-size: 0.85rem; margin-bottom: 0.3rem;">HTML, CSS, JavaScript, Node.js, Express.js, MongoDB</p>
+              <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem;">
+                <li>Developed a web-based appointment booking platform that lets patients find doctors and clinics and book appointments.</li>
+                <li>Created modules that patients, admins, and doctors can use to manage appointment times, bookings, and cancellations.</li>
+                <li>Set up a database system to keep patient, doctor, and appointment information safe and update availability in real time.</li>
+                <li>Made a simple and easy-to-use interface that simplifies booking appointments and cuts down manual work.</li>
+              </ul>
             </div>
-            <p style="color: var(--text-secondary); font-size: 0.9rem;">Bachelor of Engineering – Information Technology; GPA: 7.2</p>
+
+            <div style="margin-bottom: 0.5rem;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>Store — 3D E-Commerce Platform (MENSVERSE)</span>
+                <span>May 2026 – Aug 2026</span>
+              </div>
+              <p style="color: var(--accent-teal); font-size: 0.85rem; margin-bottom: 0.3rem;">React.js, Node.js, Express, MongoDB, JWT, Three.js / R3F</p>
+              <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem;">
+                <li>Built a full-stack e-commerce platform with two applications—a customer storefront and an admin dashboard—both built using React and Vite sharing the same backend.</li>
+                <li>Created a Node.js/Express REST API powered by MongoDB to handle product catalog order processing, customer data, and inventory management with JWT authentication.</li>
+                <li>Added automated email notifications using Nodemailer and Gmail SMTP to send order confirmations and system alerts.</li>
+                <li>Deployed a three-service architecture consisting of two frontends and one backend API on Render using a multi-service Blueprint for smooth CI/CD.</li>
+                <li>Integrated real-time inventory tracking to help store owners manage product availability dynamically.</li>
+              </ul>
+            </div>
           </div>
+
+          <!-- Education -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-graduation-cap"></i> Education</h3>
+            <div style="margin-bottom: 0.5rem;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>Bharat Institute of Engineering and Technology — Hyderabad</span>
+                <span>2022 – 2026</span>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Bachelor of Engineering – Information Technology; GPA: 7.2</p>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>Alphores Junior College — Karimnagar</span>
+                <span>2020 – 2022</span>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Intermediate 10+2; GPA: 8.2</p>
+            </div>
+          </div>
+
+          <!-- Achievements -->
           <div>
-            <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
-              <span>Alphores Junior College — Karimnagar</span>
-              <span>2020 – 2022</span>
-            </div>
-            <p style="color: var(--text-secondary); font-size: 0.9rem;">Intermediate 10+2; GPA: 8.2</p>
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-award"></i> Achievements</h3>
+            <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+              <li><strong>Saylor Academy Award:</strong> Introduction to Python.</li>
+            </ul>
           </div>
         </div>
 
-        <!-- Achievements -->
-        <div>
-          <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-award"></i> Achievements</h3>
-          <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
-            <li><strong>Saylor Academy Award:</strong> Introduction to Python.</li>
-          </ul>
+        <!-- -------------------------------------------------------------
+             TAB 2: DATA ANALYST RESUME
+             ------------------------------------------------------------- -->
+        <div id="resumeAnalyticsContent" style="display: none;">
+          <div style="text-align: center; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+            <h1 style="font-size: 1.9rem; font-weight: 800; color: var(--accent-cyan); margin-bottom: 0.3rem;">MYAKALA NAGARJUN</h1>
+            <p style="color: var(--text-secondary); font-weight: 600; font-size: 0.95rem;">Data Analyst</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.4rem;">
+              Hyderabad, India • +91 9121792433 • myakalanagarjun@gmail.com • <a href="https://linkedin.com/in/nagarjun-myakala-" target="_blank" style="color: var(--accent-teal);">linkedin.com/in/nagarjun-myakala-</a> • <a href="https://github.com/naga-012" target="_blank" style="color: var(--accent-teal);">github.com/naga-012</a>
+            </p>
+          </div>
+
+          <!-- Professional Summary -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-user-circle"></i> Professional Summary</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6;">
+              Data Analytics fresher holds a Bachelor’s degree in Engineering with a strong foundation in data analysis, SQL, Excel, Python, Power BI, and statistics. Skilled in collecting, cleaning, analyzing, and visualizing data to generate actionable business insights. Gains hands-on experience through projects focused on data analysis and dashboard creation. Loves turning complex data into clear stories. A learner with strong analytical and problem-solving abilities, eager to contribute to data-driven decision-making in a dynamic organization while continuously enhancing technical expertise.
+            </p>
+          </div>
+
+          <!-- Technical Skills -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-code"></i> Technical Skills</h3>
+            <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem;">
+              <li><strong>Programming Languages:</strong> Python, SQL</li>
+              <li><strong>Libraries & Frameworks:</strong> Pandas, NumPy, OpenCV, TensorFlow, FastAPI, Django</li>
+              <li><strong>Databases & Analytics:</strong> PostgreSQL, MySQL, Power BI, Advanced Excel, Statistics</li>
+              <li><strong>Developer & AI Tools:</strong> Git, GitHub, VS Code, Jupyter Notebook, Postman, RESTful APIs</li>
+              <li><strong>Core Competencies:</strong> Data Cleaning, Exploratory Data Analysis, Schema Design, Pipeline Optimization</li>
+            </ul>
+          </div>
+
+          <!-- Professional Experience -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-briefcase"></i> Professional Experience</h3>
+            <div style="margin-bottom: 0.5rem;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>Vangrove Tech Pvt. Ltd. — Junior Analyst Intern</span>
+                <span>06/2026 – Present</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.4rem;">Hyderabad, India</p>
+              <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.35rem;">
+                <li>Accelerated report turnaround time by 35% by building automated Python and SQL extraction pipelines that processed over 50,000 transactional records.</li>
+                <li>Reduced reporting discrepancies by 28% by putting in place data cleaning routines that tackled missing values, duplicate entries, and schema errors.</li>
+                <li>Improved visibility for senior stakeholders by creating interactive Power BI dashboards that tracked more than 12 critical business KPIs in real time.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Projects -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-folder-open"></i> Projects</h3>
+            
+            <div style="margin-bottom: 1rem;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>Health Connect Appointment Hub</span>
+                <span>June 2025 – May 2026</span>
+              </div>
+              <p style="color: var(--accent-teal); font-size: 0.85rem; margin-bottom: 0.3rem;">HTML, CSS, JavaScript, Node.js, Express.js, MongoDB</p>
+              <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem;">
+                <li>Developed a web-based appointment booking platform that lets patients find doctors and clinics and book appointments.</li>
+                <li>Created modules that patients, admins, and doctors can use to manage appointment times, bookings, and cancellations.</li>
+                <li>Set up a database system to keep patient, doctor, and appointment information safe and update availability in real time.</li>
+                <li>Made a simple and easy-to-use interface that simplifies booking appointments and cuts down manual work.</li>
+                <li>Added hospital and doctor search features so patients can find care providers based on specialty, location, or availability before making an appointment.</li>
+                <li>Ensured responsive design for accessibility across desktop and mobile devices.</li>
+              </ul>
+            </div>
+
+            <div style="margin-bottom: 0.5rem;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>MRI-Based Brain Tumor Detection System</span>
+                <span>2025</span>
+              </div>
+              <p style="color: var(--accent-teal); font-size: 0.85rem; margin-bottom: 0.3rem;">Python, TensorFlow, OpenCV, NumPy</p>
+              <ul style="padding-left: 1.2rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 0.3rem;">
+                <li>Developed a deep learning model that detects and classifies brain tumors in MRI scan images using Convolutional Neural Networks (CNN).</li>
+                <li>Augmented MRI image datasets, including resizing and normalization to improve model generalization and accuracy.</li>
+                <li>Evaluated the model on labeled MRI datasets achieving high classification accuracy when distinguishing brain tumor scans from non-tumor scans.</li>
+                <li>Evaluated model performance using metrics such as accuracy, precision, recall, and confusion matrix to validate reliability.</li>
+                <li>Built a pipeline that visualizes predictions and highlights detected tumor regions, helping interpretability of model output.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div style="margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-graduation-cap"></i> Education</h3>
+            <div style="margin-bottom: 0.5rem;">
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>Bharat Institute of Engineering and Technology — Hyderabad, India</span>
+                <span>2022 – 2026</span>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Bachelor of Engineering – Information Technology (CGPA: 7.2 / 10.0)</p>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-weight: 700; color: var(--text-primary);">
+                <span>Alphores Junior College — Karimnagar, India</span>
+                <span>2020 – 2022</span>
+              </div>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">Intermediate (10+2) (CGPA: 8.2 / 10.0)</p>
+            </div>
+          </div>
+
+          <!-- Achievements -->
+          <div>
+            <h3 style="font-size: 1.05rem; color: var(--accent-cyan); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border-color); padding-bottom: 0.2rem; margin-bottom: 0.5rem; font-weight: 700;"><i class="fas fa-award"></i> Achievements</h3>
+            <ul style="padding-left: 1.2rem; color: var(--text-secondary);">
+              <li><strong>Saylor Academy Award:</strong> Introduction to Python.</li>
+            </ul>
+          </div>
         </div>
 
       </div>
