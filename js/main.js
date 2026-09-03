@@ -180,6 +180,21 @@ const projectData = {
     ],
     github: "https://github.com/naga-012/MRI_BASED_ON_BRAIN_TUROM",
     demo: "http://localhost:8080"
+  },
+  mensStore: {
+    title: "MENSVERSE — 3D Animated Men's Fashion Store",
+    tagline: "Dark Luxury E-Commerce Platform with Interactive 3D Mannequin Fitting Room",
+    image: "assets/images/mens_store.png",
+    problem: "Traditional 2D e-commerce fashion stores fail to provide interactive 3D product previews, causing lower customer engagement, fit uncertainty, and higher return rates.",
+    tools: ["React.js (Vite)", "Three.js / React Three Fiber", "Node.js", "Express.js", "MongoDB", "Zustand", "Framer Motion"],
+    approach: "Engineered an interactive 3D virtual mannequin room with 360° touch/drag controls, smooth outfit morphing, instant color swatch material reflections, and dynamic size selectors. Integrated with a full-stack REST API and an Admin Management Portal for live product CRUD and 3D GLB model management.",
+    results: [
+      "Sub-second 3D canvas viewport rendering powered by R3F and Three.js optimization",
+      "Slide-over cart drawer with dynamic address collection and payment flow",
+      "Real-time storefront and 3D model synchronization via Admin Portal without rebuilds"
+    ],
+    github: "https://github.com/naga-012/men-s_store",
+    demo: "https://github.com/naga-012/men-s_store"
   }
 };
 
