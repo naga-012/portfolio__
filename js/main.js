@@ -199,6 +199,26 @@ const projectData = {
     ],
     github: "https://github.com/naga-012/men-s_store",
     demo: "https://github.com/naga-012/men-s_store"
+  },
+  homeFood: {
+    title: "Inti Ruchi — Homemade Food Delivery & Cloud Kitchen Platform",
+    tagline: "Synchronized Customer Food Ordering Portal & Live Admin Operations Management System",
+    image: "assets/images/home_food.png",
+    problem: "Authentic local home chefs lack unified digital tooling to manage menus and real-time orders, while customers lack direct access to verified homemade culinary options with transparent hygiene and live preparation tracking.",
+    tools: ["Python", "FastAPI", "React.js (Vite)", "SQLite / PostgreSQL", "RESTful APIs", "JWT Auth", "Tailwind CSS"],
+    approach: "Engineered a dual-portal ecosystem combining a customer food storefront and a dedicated operations management portal sharing a unified FastAPI REST backend and database. Built end-to-end live lifecycle management (Pending ➔ Accepted ➔ Preparing ➔ Out for Delivery ➔ Delivered) with role-based JWT security and real-time status synchronization without mock data.",
+    results: [
+      "Real-time synchronized order lifecycle transitioning across 5 fulfillment stages with zero mock data",
+      "Role-Based Access Control (RBAC) securing administrator APIs with automatic token verification",
+      "Interactive customer storefront with smart category filtering, cart calculation, and dietary preferences",
+      "Instant 1-click admin order actions and analytics tracking active kitchen capacity and order volume"
+    ],
+    github: "https://github.com/naga-012/Home_food_customer",
+    githubRepos: [
+      { label: "Customer Storefront Repo", url: "https://github.com/naga-012/Home_food_customer" },
+      { label: "Admin Operations Repo", url: "https://github.com/naga-012/Home_food_admin" }
+    ],
+    demo: "#"
   }
 };
 
