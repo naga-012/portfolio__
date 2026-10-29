@@ -223,7 +223,11 @@ const projectData = {
       { label: "Customer Dining App", url: "https://github.com/naga-012/subbayya_gari_hotel" },
       { label: "Owner Operations Portal", url: "https://github.com/naga-012/subbayya_gari_hotel_owner" }
     ],
-    demo: "#"
+    demo: "https://subbayyagar-hotel.onrender.com",
+    demoLinks: [
+      { label: "Live Customer Storefront", url: "https://subbayyagar-hotel.onrender.com" },
+      { label: "Live Owner Portal", url: "https://subbayya-gari-hotel.onrender.com" }
+    ]
   }
 };
 
@@ -297,7 +301,7 @@ function populateProjectModal(data) {
 
     <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
       ${data.githubRepos ? data.githubRepos.map(repo => `<a href="${repo.url}" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> ${repo.label}</a>`).join('') : `<a href="${data.github}" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View GitHub Repository</a>`}
-      ${data.demo && data.demo !== '#' ? `<a href="${data.demo}" target="_blank" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> Launch Interactive App</a>` : `<button onclick="showToast('Live Demo previewing...')" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> Live Demo</button>`}
+      ${data.demoLinks ? data.demoLinks.map(d => `<a href="${d.url}" target="_blank" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> ${d.label}</a>`).join('') : (data.demo && data.demo !== '#' ? `<a href="${data.demo}" target="_blank" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> Launch Interactive App</a>` : `<button onclick="showToast('Live Demo previewing...')" class="btn btn-secondary"><i class="fas fa-external-link-alt"></i> Live Demo</button>`)}
     </div>
   `;
 }
