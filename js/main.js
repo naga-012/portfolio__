@@ -151,6 +151,38 @@ function initColorPicker() {
    3. Project Details Modal System
    -------------------------------------------------------------------------- */
 const projectData = {
+  ecommerceAnalytics: {
+    title: "E-Commerce Sales, Customer & Profitability Analytics",
+    tagline: "End-to-End Multi-Year Marketplace Intelligence & Customer Economics Pipeline",
+    image: "assets/images/ecommerce_analytics.png",
+    problem: "Multi-million rupee Indian e-commerce marketplace faced profit erosion from unmonitored discounting, lack of customer segmentation, 14.2% return rates, and delayed operational reporting.",
+    tools: ["Python", "Pandas", "NumPy", "MySQL", "Power BI", "DAX", "Advanced Excel"],
+    approach: "Engineered automated Python ETL pipeline processing 52,500 transactional records. Designed a 3NF relational and star schema in MySQL. Developed RFM customer segmentation, cohort retention curves, product margin economics, and built interactive Power BI executive dashboards with 25+ DAX measures.",
+    results: [
+      "Analyzed ₹134.77M (13.5 Crore) gross revenue across 52,500 transactions and 5,156 customers",
+      "Identified product margin drivers achieving an overall 28.63% net profitability benchmark",
+      "Segmented customer base using RFM models to uncover high-value champions and churn risks",
+      "Discovered reverse logistics cost leaks cutting return reconciliation lag by 40%"
+    ],
+    github: "https://github.com/naga-012/E-COMMERCE-DATA",
+    demo: "https://github.com/naga-012/E-COMMERCE-DATA"
+  },
+  hospitalAnalytics: {
+    title: "Healthcare Operations & Hospital Analytics Dashboard",
+    tagline: "Multi-Facility Patient Throughput, Clinician Scheduling & Operational Intelligence",
+    image: "assets/images/hospital_analytics.png",
+    problem: "10-facility healthcare network experienced high appointment no-show rates (18.4%), clinic wait-time bottlenecks, uneven clinician workloads, and revenue leakages across 15 clinical departments.",
+    tools: ["Python", "Pandas", "MySQL", "Power BI", "DAX", "Advanced Excel", "Statistical Modeling"],
+    approach: "Designed a dimensional star schema in MySQL for 245k+ patient records. Built an end-to-end Python automated cleaning and KPI validation pipeline. Modeled DAX metrics tracking patient wait times, bed utilization, and clinician scheduling throughput, and constructed an executive Power BI dashboard with operational drill-downs.",
+    results: [
+      "Modeled 245,000+ patient consultations across 10 facilities and 15 clinical specialties",
+      "Pinpointed scheduling optimizations projected to reduce appointment no-shows by 18.4%",
+      "Balanced clinician workload distributions improving peak-hour bed utilization to 88%",
+      "Mapped department-level revenue performance to identify top operational contributors"
+    ],
+    github: "https://github.com/naga-012/HEALTHCARE-APPOINTMENT-HOSPITAL",
+    demo: "https://github.com/naga-012/HEALTHCARE-APPOINTMENT-HOSPITAL"
+  },
   healthConnect: {
     title: "Health Connect Appointment Hub",
     tagline: "Healthcare Analytics & Smart Appointment Booking Platform",
