@@ -168,7 +168,11 @@ const projectData = {
       { label: "Patient Booking Repo", url: "https://github.com/naga-012/Health_connect_patient_booking" },
       { label: "Doctor Portal Repo", url: "https://github.com/naga-012/Health_connect_Doctor" }
     ],
-    demo: "#"
+    demo: "https://health-connect-patient-booking.onrender.com",
+    demoLinks: [
+      { label: "Patient Booking Portal (Live)", url: "https://health-connect-patient-booking.onrender.com" },
+      { label: "Doctor Portal (Live)", url: "https://health-connect-doctor.onrender.com" }
+    ]
   },
   mensStore: {
     title: "MENSVERSE — 3D Animated Men's Fashion Store",
@@ -183,7 +187,11 @@ const projectData = {
       "Real-time storefront and 3D model synchronization via Admin Portal without rebuilds"
     ],
     github: "https://github.com/naga-012/men-s_store",
-    demo: "https://github.com/naga-012/men-s_store"
+    demo: "https://saha-customer-site.onrender.com",
+    demoLinks: [
+      { label: "Customer Storefront (Live)", url: "https://saha-customer-site.onrender.com" },
+      { label: "Admin Operations (Live)", url: "https://saha-admin-site.onrender.com" }
+    ]
   },
   homeFood: {
     title: "Inti Ruchi — Homemade Food Delivery & Cloud Kitchen Platform",
@@ -203,7 +211,11 @@ const projectData = {
       { label: "Customer Storefront Repo", url: "https://github.com/naga-012/Home_food_customer" },
       { label: "Admin Operations Repo", url: "https://github.com/naga-012/Home_food_admin" }
     ],
-    demo: "#"
+    demo: "https://inti-ruchi-frontend.onrender.com",
+    demoLinks: [
+      { label: "Customer Storefront (Live)", url: "https://inti-ruchi-frontend.onrender.com" },
+      { label: "Admin Operations (Live)", url: "https://inti-ruchi-admin.onrender.com" }
+    ]
   },
   subbayyaHotel: {
     title: "Subbayya Gari Hotel — Dining & Operations Platform",
