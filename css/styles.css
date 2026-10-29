@@ -402,6 +402,26 @@ ul {
   transform: translateY(-2px);
 }
 
+.btn-sm {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.84rem;
+  gap: 0.45rem;
+}
+
+.btn-live {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+}
+
+.btn-live:hover {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: #10b981;
+  color: #34d399;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.25);
+}
+
 /* --------------------------------------------------------------------------
    Hero Section
    -------------------------------------------------------------------------- */
@@ -1037,6 +1057,7 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-width: 0;
 }
 
 .project-tag {
@@ -1120,7 +1141,9 @@ ul {
 .project-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  width: 100%;
 }
 
 .project-media-wrapper {
