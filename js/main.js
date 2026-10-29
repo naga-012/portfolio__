@@ -1,5 +1,5 @@
 /**
- * NAGARJUN MYAKALA - DATA ANALYST PORTFOLIO INTERACTIVITY
+ * MYAKALA NAGARJUN - DATA ANALYST PORTFOLIO INTERACTIVITY
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -539,7 +539,7 @@ function initContactForm() {
         statusBox.innerHTML = `<i class="fas fa-check-circle"></i> Thank you, ${name}! Your message was delivered directly to myakalanagarjun@gmail.com. I will respond shortly.`;
       }
 
-      showToast(`Thank you, ${name}! Your message has been sent to Nagarjun.`);
+      showToast(`Thank you, ${name}! Your message has been sent to Myakala Nagarjun.`);
       form.reset();
     });
   }
