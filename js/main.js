@@ -219,6 +219,26 @@ const projectData = {
       { label: "Admin Operations Repo", url: "https://github.com/naga-012/Home_food_admin" }
     ],
     demo: "#"
+  },
+  subbayyaHotel: {
+    title: "Subbayya Gari Hotel — Dining & Operations Platform",
+    tagline: "Pure Vegetarian Andhra Dining Storefront & Real-Time Restaurant Owner Operations Portal",
+    image: "assets/images/subbayya_hotel.png",
+    problem: "Traditional high-volume heritage restaurants face severe dining bottlenecks during rush hours, lack automated synchronization between customer orders and kitchen lines, and suffer from manual billing and stock reconciliation errors.",
+    tools: ["Node.js", "Express.js", "MongoDB", "Socket.IO", "JWT Auth", "Chart.js", "JavaScript", "HTML5/CSS3"],
+    approach: "Architected a dual-portal restaurant operating ecosystem: a responsive customer dining storefront showcasing authentic Godavari Butta Bhojanam with email OTP authentication, and a high-performance owner operations portal with real-time bidirectional Socket.IO order broadcasting, live audio chimes, full kitchen status workflows, automated sequential order sequencing (SGH-10001+), and Chart.js financial sales intelligence.",
+    results: [
+      "Real-time bidirectional Socket.IO kitchen dispatch with live audio alerts and status broadcasts",
+      "Full order lifecycle pipeline (Pending ➔ In Kitchen ➔ Out for Delivery / Pickup ➔ Delivered)",
+      "Interactive Chart.js financial telemetry monitoring daily revenue trends, item velocity, and lifetime customer spend",
+      "Dynamic menu controls with instant stock toggling, category filtering, and print-ready bill receipts"
+    ],
+    github: "https://github.com/naga-012/subbayya_gari_hotel",
+    githubRepos: [
+      { label: "Customer Dining App", url: "https://github.com/naga-012/subbayya_gari_hotel" },
+      { label: "Owner Operations Portal", url: "https://github.com/naga-012/subbayya_gari_hotel_owner" }
+    ],
+    demo: "#"
   }
 };
 
