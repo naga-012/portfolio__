@@ -170,21 +170,6 @@ const projectData = {
     ],
     demo: "#"
   },
-  mriTumor: {
-    title: "MRI-Based Tumor Detection Using Deep Learning",
-    tagline: "Convolutional Neural Network Diagnostic Classifier with Grad-CAM Visual Heatmaps",
-    image: "assets/images/mri_detection.png",
-    problem: "Long diagnostic turn-around time and high manual inspection variability in detecting early brain lesions from high-resolution MRI scans.",
-    tools: ["Python", "PyTorch / TensorFlow", "OpenCV", "FastAPI", "Streamlit", "Power BI"],
-    approach: "Preprocessed multi-sequence MRI scan dataset using pixel normalization and spatial augmentations. Trained a custom ResNet architecture with Grad-CAM visual heatmaps highlighting suspicious tissue areas for radiologist verification.",
-    results: [
-      "Achieved 94.8% classification accuracy across brain tumor categories",
-      "Sub-second model inference time (<400ms per scan volume)",
-      "Provided interpretable diagnostic heatmaps decreasing radiologist review time by 50%"
-    ],
-    github: "https://github.com/naga-012/MRI_BASED_ON_BRAIN_TUROM",
-    demo: "#"
-  },
   mensStore: {
     title: "MENSVERSE — 3D Animated Men's Fashion Store",
     tagline: "Dark Luxury E-Commerce Platform with Interactive 3D Mannequin Fitting Room",
